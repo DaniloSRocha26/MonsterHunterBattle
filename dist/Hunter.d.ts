@@ -12,12 +12,11 @@ export declare class HunterCreator {
     attackChanceBase: number;
     activeBuffs: Buff[];
     maxLifePoints: number;
-    lifestealEffect: {
-        lifesteal: number;
-        duration: number;
-    } | null;
+    potions: number;
+    potionHealAmount: number;
     constructor(name: string, weapon: Weapon, damageWeapon: Weapon, lifePointsHunter: number, armor: number, dodgeChanceBase: number, attackChanceBase: number, maxLifePoints: number);
     nextTurn(): void;
-    attackMonster(monster: MonsterCreator): void;
+    usePotion(): void;
+    attackMonster(monster: MonsterCreator): Promise<void>;
 }
 //# sourceMappingURL=Hunter.d.ts.map

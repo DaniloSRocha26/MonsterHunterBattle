@@ -4,12 +4,25 @@ export declare class MonsterCreator {
     lifePointsMonster: number;
     dodgeChanceBase: number;
     attackChanceBase: number;
-    constructor(name: string, damageMonster: number, lifePointsMonster: number, dodgeChanceBase: number, attackChanceBase: number);
+    weakness: {
+        Fire?: number;
+        Ice?: number;
+        Thunder?: number;
+        Water?: number;
+        Dragon?: number;
+    };
+    constructor(name: string, damageMonster: number, lifePointsMonster: number, dodgeChanceBase: number, attackChanceBase: number, weakness: {
+        Fire?: number;
+        Ice?: number;
+        Thunder?: number;
+        Water?: number;
+        Dragon?: number;
+    });
     rollDodgeChance(): void;
     attackHunter(hunter: {
         lifePointsHunter: number;
         dodgeChanceBase: number;
         name: string;
-    }): void;
+    }): Promise<void>;
 }
 //# sourceMappingURL=Monster.d.ts.map

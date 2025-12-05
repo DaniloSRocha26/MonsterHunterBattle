@@ -1,7 +1,5 @@
 import { HunterCreator } from "../Hunter";
 import { MonsterCreator } from "../Monster";
-type Element = "Fire" | "Water" | "Thunder" | "Ice" | "Dragon" | false;
-export declare const elements: Element[];
 type WeaponType = "Great Sword" | "Sword & Shield" | "Dual Blades" | "Long Sword" | "Hunting Horn " | "Lance" | "Gunlance" | "Hammer" | "Switch Axe" | "Charge Blade" | "Insect Glaive" | "Bow" | "Light Bowgun" | "Heavy Bowgun ";
 export declare const weaponType: WeaponType[];
 type TypeOfSkill = "Attack" | "Defense" | "Buff";
@@ -12,8 +10,8 @@ export interface Skill {
     damageSkill: number;
     typeOfSkill: TypeOfSkill[];
     multiplier: number;
-    buff?: Buff;
-    action: (baseDamage: number, damageSkill: number, hunter: HunterCreator, monster: MonsterCreator, buffToAply?: Buff) => void;
+    buffs?: Buff[];
+    action: (baseDamage: number, damageSkill: number, hunter: HunterCreator, monster: MonsterCreator, weapon: Weapon) => void;
 }
 export interface Buff {
     name: string;
@@ -25,8 +23,12 @@ export interface Weapon {
     name: string;
     type: WeaponType;
     baseDamage: number;
-    element?: Element[];
     skills: Skill[];
+    element?: "Fire" | "Ice" | "Thunder" | "Water" | "Dragon";
+    statusEffect?: {
+        type: "Paralysis" | "Poison" | "Blast";
+        buildupPerHit: number;
+    };
 }
 export {};
 //# sourceMappingURL=Moves.d.ts.map
