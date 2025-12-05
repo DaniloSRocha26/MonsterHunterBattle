@@ -13,6 +13,35 @@ exports.monster = new Monster_1.MonsterCreator("Arkveld", 20, 5000, 30, 30, {
     Thunder: 1.2,
     Water: 1.1,
     Dragon: 1.25,
+}, {
+    head: {
+        name: "Cabeça",
+        damageMultiplier: 1.25
+    },
+    frontLeftLeg: {
+        name: "Pata Dianteira Esquerda",
+        damageMultiplier: 1.05
+    },
+    frontRightLeg: {
+        name: "Pata Dianteira Direita",
+        damageMultiplier: 1.05
+    },
+    backLeftLeg: {
+        name: "Pata Traseira Esquerda",
+        damageMultiplier: 1.05
+    },
+    backRightLeg: {
+        name: "Pata Traseira Direita",
+        damageMultiplier: 1.05
+    },
+    tail: {
+        name: "Cauda",
+        damageMultiplier: 1.15
+    },
+    body: {
+        name: "Corpo",
+        damageMultiplier: 1.0
+    }
 });
 async function startBattle() {
     await (0, Util_2.wait)(1500);
@@ -23,8 +52,8 @@ async function startBattle() {
         await (0, Util_2.wait)(1500);
         const valueRandomHunterAttack = (0, Util_1.getRandomValue)(40, 100);
         const valueRandomHunterDodge = (0, Util_1.getRandomValue)(40, 100);
-        const valueRandomMonsterAttack = (0, Util_1.getRandomValue)(0, 100);
-        const valueRandomMonsterDodge = (0, Util_1.getRandomValue)(0, 70);
+        const valueRandomMonsterAttack = (0, Util_1.getRandomValue)(40, 100);
+        const valueRandomMonsterDodge = (0, Util_1.getRandomValue)(40, 70);
         exports.hunter.dodgeChanceBase = valueRandomHunterDodge;
         exports.hunter.attackChanceBase = valueRandomHunterAttack;
         exports.monster.dodgeChanceBase = valueRandomMonsterDodge;
@@ -41,7 +70,7 @@ async function startBattle() {
             if (exports.hunter.lifePointsHunter > 0) {
                 await (0, Util_2.wait)(1500);
                 console.log("\n");
-                console.log(`O monstro ${exports.monster.name} tem ${exports.monster.dodgeChanceBase}% de chance de desviar e o ${exports.hunter.name} tem ${exports.hunter.attackChanceBase}% de chance de acertar o atacar`);
+                console.log(`O monstro ${exports.monster.name} tem ${exports.monster.dodgeChanceBase}% de chance de desviar e o ${exports.hunter.name} tem ${exports.hunter.attackChanceBase}% de chance de acertar o ataque`);
                 await (0, Util_2.wait)(1500);
                 exports.hunter.attackMonster(exports.monster);
             }

@@ -9,13 +9,15 @@ class MonsterCreator {
     dodgeChanceBase;
     attackChanceBase;
     weakness;
-    constructor(name, damageMonster, lifePointsMonster, dodgeChanceBase, attackChanceBase, weakness) {
+    bodyParts;
+    constructor(name, damageMonster, lifePointsMonster, dodgeChanceBase, attackChanceBase, weakness, bodyParts) {
         this.name = name;
         this.damageMonster = damageMonster;
         this.lifePointsMonster = lifePointsMonster;
         this.dodgeChanceBase = dodgeChanceBase;
         this.attackChanceBase = attackChanceBase;
         this.weakness = weakness;
+        this.bodyParts = bodyParts;
     }
     rollDodgeChance() { }
     async attackHunter(hunter) {

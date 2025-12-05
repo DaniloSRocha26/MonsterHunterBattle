@@ -1,5 +1,12 @@
 import { HunterCreator } from "../Hunter";
 import { MonsterCreator } from "../Monster";
+export type BodyPart = {
+    name: string;
+    damageMultiplier: number;
+    damageTaken?: number;
+    breakThreshold?: number;
+    broken?: boolean;
+};
 type WeaponType = "Great Sword" | "Sword & Shield" | "Dual Blades" | "Long Sword" | "Hunting Horn " | "Lance" | "Gunlance" | "Hammer" | "Switch Axe" | "Charge Blade" | "Insect Glaive" | "Bow" | "Light Bowgun" | "Heavy Bowgun ";
 export declare const weaponType: WeaponType[];
 type TypeOfSkill = "Attack" | "Defense" | "Buff";

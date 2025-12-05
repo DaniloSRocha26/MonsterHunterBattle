@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dualblades = void 0;
+const Util_1 = require("../../Util");
 const attackMonster = (baseDamage, damageSkill, hunter, monster, weapon) => {
     let multiplier = 1;
     hunter.activeBuffs.forEach((buff) => {
@@ -24,6 +25,12 @@ const attackMonster = (baseDamage, damageSkill, hunter, monster, weapon) => {
     });
     const rawDamage = (baseDamage + damageSkill) * multiplier;
     let finalDamage = Math.floor(rawDamage);
+    const keys = Object.keys(monster.bodyParts);
+    const monsterRandomPart = (0, Util_1.getRandomValue)(0, keys.length - 1);
+    const randomPartName = keys[monsterRandomPart];
+    const monsterTargetPart = monster.bodyParts[randomPartName];
+    const partMultiplier = monsterTargetPart?.damageMultiplier ?? 1;
+    finalDamage = Math.floor(finalDamage * partMultiplier);
     if (weapon.element) {
         const elementMultiplier = monster.weakness[weapon.element] ?? 1.0;
         finalDamage = Math.floor(finalDamage * elementMultiplier);
@@ -37,7 +44,7 @@ const attackMonster = (baseDamage, damageSkill, hunter, monster, weapon) => {
     const newLifeMonster = monster.lifePointsMonster - finalDamage;
     monster.lifePointsMonster = newLifeMonster;
     console.log("\n");
-    console.log(`${monster.name} recebeu ${finalDamage} de dano e está com ${monster.lifePointsMonster} pontos de vida`);
+    console.log(`${monster.name} recebeu um golpe na parte [${monsterTargetPart?.name}] tomando ${finalDamage} de dano! (Vida restante: ${monster.lifePointsMonster})`);
 };
 exports.dualblades = {
     name: "Iron Dual Blades",
