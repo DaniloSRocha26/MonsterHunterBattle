@@ -54,8 +54,7 @@ export class HunterCreator {
                 } else {
                     console.log("\n");
                     console.log(
-                        `• ${buff.name} | +${
-                            (buff.buffValue - 1) * 100
+                        `• ${buff.name} | +${(buff.buffValue - 1) * 100
                         }% dano | duração: ${buff.duration}`
                     );
                 }
@@ -120,13 +119,15 @@ export class HunterCreator {
                     } else {
                         console.log("\n");
                         console.log(
-                            `Buff ativo: ${buff.name} | +${
-                                (buff.buffValue - 1) * 100
+                            `Buff ativo: ${buff.name} | +${(buff.buffValue - 1) * 100
                             }% de dano | duração: ${buff.duration}`
                         );
                     }
                 });
                 await wait(1500);
+
+
+
 
                 if (monster.lifePointsMonster <= 0) {
                     console.log("\n");

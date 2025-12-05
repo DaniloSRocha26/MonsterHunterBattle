@@ -1,3 +1,4 @@
+import { BodyPart } from "./interface/Moves";
 import { wait } from "./Util";
 
 export class MonsterCreator {
@@ -13,6 +14,9 @@ export class MonsterCreator {
         Water?: number;
         Dragon?: number;
     };
+    bodyParts: {
+        [key: string]: BodyPart
+    }
 
     constructor(
         name: string,
@@ -26,6 +30,9 @@ export class MonsterCreator {
             Thunder?: number;
             Water?: number;
             Dragon?: number;
+        },
+        bodyParts: {
+            [key: string]: BodyPart
         }
     ) {
         this.name = name;
@@ -34,9 +41,11 @@ export class MonsterCreator {
         this.dodgeChanceBase = dodgeChanceBase;
         this.attackChanceBase = attackChanceBase;
         this.weakness = weakness;
+        this.bodyParts = bodyParts
+
     }
 
-    rollDodgeChance() {}
+    rollDodgeChance() { }
 
     async attackHunter(hunter: {
         lifePointsHunter: number;

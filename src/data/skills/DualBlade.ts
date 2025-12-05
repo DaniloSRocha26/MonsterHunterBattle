@@ -1,6 +1,7 @@
 import { HunterCreator } from "../../Hunter";
 import { typeOfSkill, Weapon } from "../../interface/Moves";
 import { MonsterCreator } from "../../Monster";
+import { getRandomValue } from "../../Util";
 
 const attackMonster = (
     baseDamage: number,
@@ -36,6 +37,15 @@ const attackMonster = (
     const rawDamage = (baseDamage + damageSkill) * multiplier;
     let finalDamage = Math.floor(rawDamage);
 
+    const keys = Object.keys(monster.bodyParts)
+    const monsterRandomPart = getRandomValue(0, keys.length - 1)
+    const randomPartName = keys[monsterRandomPart]!
+    const monsterTargetPart = monster.bodyParts[randomPartName]
+
+
+    const partMultiplier = monsterTargetPart?.damageMultiplier ?? 1
+    finalDamage = Math.floor(finalDamage * partMultiplier)
+
     if (weapon.element) {
         const elementMultiplier = monster.weakness[weapon.element] ?? 1.0;
         finalDamage = Math.floor(finalDamage * elementMultiplier);
@@ -53,12 +63,12 @@ const attackMonster = (
 
     console.log("\n");
     console.log(
-        `${monster.name} recebeu ${finalDamage} de dano e está com ${monster.lifePointsMonster} pontos de vida`
+        `${monster.name} recebeu um golpe na parte [${monsterTargetPart?.name}] tomando ${finalDamage} de dano! (Vida restante: ${monster.lifePointsMonster})`
     );
 };
 
 export const dualblades: Weapon = {
-    name: "Iron Dual Blades",
+    name: "Rathalos Dual Blades",
     type: "Dual Blades",
     baseDamage: 40,
     element: "Fire",

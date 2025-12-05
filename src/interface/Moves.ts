@@ -1,6 +1,15 @@
 import { HunterCreator } from "../Hunter";
 import { MonsterCreator } from "../Monster";
 
+
+export type BodyPart = {
+    name: string;
+    damageMultiplier: number;
+    damageTaken?: number;
+    breakThreshold?: number;
+    broken?: boolean;
+}
+
 type WeaponType =
     | "Great Sword"
     | "Sword & Shield"

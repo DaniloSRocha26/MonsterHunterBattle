@@ -20,7 +20,37 @@ export const monster = new MonsterCreator("Arkveld", 20, 5000, 30, 30, {
     Thunder: 1.2,
     Water: 1.1,
     Dragon: 1.25,
+}, {
+    head: {
+        name: "Cabeça",
+        damageMultiplier: 1.25
+    },
+    frontLeftLeg: {
+        name: "Pata Dianteira Esquerda",
+        damageMultiplier: 1.05
+    },
+    frontRightLeg: {
+        name: "Pata Dianteira Direita",
+        damageMultiplier: 1.05
+    },
+    backLeftLeg: {
+        name: "Pata Traseira Esquerda",
+        damageMultiplier: 1.05
+    },
+    backRightLeg: {
+        name: "Pata Traseira Direita",
+        damageMultiplier: 1.05
+    },
+    tail: {
+        name: "Cauda",
+        damageMultiplier: 1.15
+    },
+    body: {
+        name: "Corpo",
+        damageMultiplier: 1.0
+    }
 });
+
 
 async function startBattle() {
     await wait(1500);
