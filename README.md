@@ -1,0 +1,3 @@
+Esse código é baseado no recente jogo para consoles e PC's = Monster Hunter Wilds
+
+O código primeiramente vai ser uma "batalha de turnos" com uma "inteligência artificial" focada no começo em apenas 1 monstro(Arkveld) com ataques com danos calculados, chance de acertar, igualmente o personagem vai ter danos calculáveis e chances de acertar e desviar também. Futuramente será totalmente escalável para 2 ou + players de uma vez
