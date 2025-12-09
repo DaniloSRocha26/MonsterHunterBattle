@@ -5,8 +5,26 @@ const Util_1 = require("./Util");
 const Util_2 = require("./Util");
 const Hunter_1 = require("./Hunter");
 const Monster_1 = require("./Monster");
-const DualBlade_1 = require("./data/skills/DualBlade");
-exports.hunter = new Hunter_1.HunterCreator("Danilo", DualBlade_1.dualblades, DualBlade_1.dualblades, 100, 20, 50, 0, 100);
+const Arsenal_1 = require("./data/Arsenal");
+const Moves_1 = require("./interface/Moves");
+const randomTypeIndex = (0, Util_1.getRandomValue)(0, Moves_1.weaponType.length - 1);
+const selectedTypeName = Moves_1.weaponType[randomTypeIndex]?.trim();
+console.log("Sorteando categoria de arma");
+console.log(`Categoria Definida: [${selectedTypeName}]`);
+const availableWeapons = Arsenal_1.Arsenal.filter(w => w.type.trim() === selectedTypeName);
+let hunterWeapon;
+if (availableWeapons.length > 0) {
+    console.log(`Encontradas ${availableWeapons.length} opções disponíveis.`);
+    const specificIndex = (0, Util_1.getRandomValue)(0, availableWeapons.length - 1);
+    hunterWeapon = availableWeapons[specificIndex];
+}
+else {
+    console.log(`Nenhuma arma encontrada para o tipo: ${selectedTypeName}`);
+    console.log(`Equipando uma arma de emergência para iniciar a batalha`);
+    hunterWeapon = Arsenal_1.Arsenal[0];
+}
+console.log(`O Caçador equipou: ${hunterWeapon?.name}`);
+exports.hunter = new Hunter_1.HunterCreator("Danilo", hunterWeapon, hunterWeapon, 100, 20, 50, 0, 100);
 exports.monster = new Monster_1.MonsterCreator("Arkveld", 20, 5000, 30, 30, {
     Fire: 1.05,
     Ice: 1.1,
@@ -62,7 +80,11 @@ async function startBattle() {
             console.log("\n");
             console.log(`O caçador ${exports.hunter.name} tem ${exports.hunter.dodgeChanceBase}% de chance de desviar e o ${exports.monster.name} tem ${exports.monster.attackChanceBase}% de chance de acertar o ataque `);
             await (0, Util_2.wait)(1500);
-            exports.monster.attackHunter(exports.hunter);
+            const canMonsterMove = exports.monster.applyStatusTurn();
+            await (0, Util_2.wait)(1000);
+            if (canMonsterMove) {
+                exports.monster.attackHunter(exports.hunter);
+            }
             if (exports.hunter.lifePointsHunter <= 50 && exports.hunter.potions > 0) {
                 exports.hunter.usePotion();
             }

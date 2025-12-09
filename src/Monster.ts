@@ -1,5 +1,9 @@
 import { BodyPart } from "./interface/Moves";
+import { monster } from "./main";
 import { wait } from "./Util";
+
+
+
 
 export class MonsterCreator {
     name: string;
@@ -16,6 +20,18 @@ export class MonsterCreator {
     };
     bodyParts: {
         [key: string]: BodyPart
+    }
+    statusBuildup: {
+        Paralysis: number
+        Poison: number
+        Blast: number
+    }
+    activeStatusEffects: {
+        isParalyzed: boolean
+        paralysisTurnsLeft: number
+        isPoisoned: boolean
+        poisonTurnsLeft: number
+        poisonDamage: number
     }
 
     constructor(
@@ -34,6 +50,7 @@ export class MonsterCreator {
         bodyParts: {
             [key: string]: BodyPart
         }
+
     ) {
         this.name = name;
         this.damageMonster = damageMonster;
@@ -42,10 +59,52 @@ export class MonsterCreator {
         this.attackChanceBase = attackChanceBase;
         this.weakness = weakness;
         this.bodyParts = bodyParts
+        this.statusBuildup = {
+            Paralysis: 0,
+            Poison: 0,
+            Blast: 0
+        }
+        this.activeStatusEffects = {
+            isParalyzed: false,
+            paralysisTurnsLeft: 0,
+            isPoisoned: false,
+            poisonTurnsLeft: 0,
+            poisonDamage: 50
+        }
 
     }
 
-    rollDodgeChance() { }
+    applyStatusTurn(): boolean {
+        let canMove = true
+
+        if (this.activeStatusEffects.isPoisoned) {
+            this.lifePointsMonster -= this.activeStatusEffects.poisonDamage
+            this.activeStatusEffects.poisonTurnsLeft--
+
+            console.log("Veneno Aplicado")
+            console.log(`O monstro ${monster.name} tomou ${this.activeStatusEffects.poisonDamage} de dano por veneno`)
+
+            if (this.activeStatusEffects.poisonTurnsLeft <= 0) {
+                this.activeStatusEffects.isPoisoned = false
+                console.log(`O efeito do veneno passou`)
+            }
+        }
+
+        if (this.activeStatusEffects.isParalyzed) {
+            canMove = false
+            this.activeStatusEffects.paralysisTurnsLeft--
+
+            console.log(`O monstro ${monster.name} está totalmente paralisado e não pode atacar e nem desviar`)
+
+            if (this.activeStatusEffects.paralysisTurnsLeft <= 0) {
+                this.activeStatusEffects.isParalyzed = false
+                console.log(`O monstro ${monster.name} se recuperou da paralisia`)
+            }
+        }
+
+        return canMove
+    }
+
 
     async attackHunter(hunter: {
         lifePointsHunter: number;

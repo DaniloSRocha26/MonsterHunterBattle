@@ -1,3 +1,3 @@
-import { Weapon } from "../../interface/Moves";
-export declare const dualblades: Weapon;
+import { Skill } from "../../interface/Moves";
+export declare const dualbladesMoves: Skill[];
 //# sourceMappingURL=DualBlade.d.ts.map

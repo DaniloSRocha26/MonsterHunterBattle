@@ -136,11 +136,13 @@ export class HunterCreator {
                     );
                 }
                 await wait(1500);
-            } else {
-                console.log("\n");
-                console.log(`O monstro ${monster.name} desviou`);
             }
-            await wait(1500);
         }
+        else {
+            console.log("\n");
+            console.log(`O monstro ${monster.name} desviou`);
+
+        }
+        await wait(1500);
     }
 }

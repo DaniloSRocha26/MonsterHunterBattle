@@ -1,6 +1,8 @@
 import { HunterCreator } from "../Hunter";
 import { MonsterCreator } from "../Monster";
 
+export type Elementype = "Fire" | "Ice" | "Thunder" | "Water" | "Dragon"
+export type statusType = "Paralysis" | "Poison" | "Blast"
 
 export type BodyPart = {
     name: string;
@@ -74,9 +76,9 @@ export interface Weapon {
     type: WeaponType;
     baseDamage: number;
     skills: Skill[];
-    element?: "Fire" | "Ice" | "Thunder" | "Water" | "Dragon";
+    element?: Elementype | undefined
     statusEffect?: {
-        type: "Paralysis" | "Poison" | "Blast";
+        type: statusType
         buildupPerHit: number;
-    };
+    } | undefined;
 }

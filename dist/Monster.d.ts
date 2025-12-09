@@ -15,6 +15,18 @@ export declare class MonsterCreator {
     bodyParts: {
         [key: string]: BodyPart;
     };
+    statusBuildup: {
+        Paralysis: number;
+        Poison: number;
+        Blast: number;
+    };
+    activeStatusEffects: {
+        isParalyzed: boolean;
+        paralysisTurnsLeft: number;
+        isPoisoned: boolean;
+        poisonTurnsLeft: number;
+        poisonDamage: number;
+    };
     constructor(name: string, damageMonster: number, lifePointsMonster: number, dodgeChanceBase: number, attackChanceBase: number, weakness: {
         Fire?: number;
         Ice?: number;
@@ -24,7 +36,7 @@ export declare class MonsterCreator {
     }, bodyParts: {
         [key: string]: BodyPart;
     });
-    rollDodgeChance(): void;
+    applyStatusTurn(): boolean;
     attackHunter(hunter: {
         lifePointsHunter: number;
         dodgeChanceBase: number;

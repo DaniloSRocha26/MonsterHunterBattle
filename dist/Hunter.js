@@ -89,12 +89,12 @@ class HunterCreator {
                 }
                 await (0, Util_1.wait)(1500);
             }
-            else {
-                console.log("\n");
-                console.log(`O monstro ${monster.name} desviou`);
-            }
-            await (0, Util_1.wait)(1500);
         }
+        else {
+            console.log("\n");
+            console.log(`O monstro ${monster.name} desviou`);
+        }
+        await (0, Util_1.wait)(1500);
     }
 }
 exports.HunterCreator = HunterCreator;

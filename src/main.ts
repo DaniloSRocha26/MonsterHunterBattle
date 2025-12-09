@@ -2,12 +2,40 @@ import { getRandomValue } from "./Util";
 import { wait } from "./Util";
 import { HunterCreator } from "./Hunter";
 import { MonsterCreator } from "./Monster";
-import { dualblades } from "./data/skills/DualBlade";
+import { Arsenal } from "./data/Arsenal";
+import { weaponType } from "./interface/Moves";
+
+
+
+
+
+const randomTypeIndex = getRandomValue(0, weaponType.length - 1)
+const selectedTypeName = weaponType[randomTypeIndex]?.trim()
+
+console.log("Sorteando categoria de arma")
+console.log(`Categoria Definida: [${selectedTypeName}]`)
+
+const availableWeapons = Arsenal.filter(w => w.type.trim() === selectedTypeName)
+
+let hunterWeapon
+
+if (availableWeapons.length > 0) {
+    console.log(`Encontradas ${availableWeapons.length} opções disponíveis.`)
+    const specificIndex = getRandomValue(0, availableWeapons.length - 1)
+    hunterWeapon = availableWeapons[specificIndex]
+} else {
+    console.log(`Nenhuma arma encontrada para o tipo: ${selectedTypeName}`)
+    console.log(`Equipando uma arma de emergência para iniciar a batalha`)
+    hunterWeapon = Arsenal[0]
+}
+
+
+console.log(`O Caçador equipou: ${hunterWeapon?.name}`)
 
 export const hunter = new HunterCreator(
     "Danilo",
-    dualblades,
-    dualblades,
+    hunterWeapon!,
+    hunterWeapon!,
     100,
     20,
     50,
@@ -57,6 +85,7 @@ async function startBattle() {
 
     while (monster.lifePointsMonster > 0 && hunter.lifePointsHunter > 0) {
         console.log("\n-----INÍCIO DO TURNO-----");
+
         await wait(1500);
 
         hunter.nextTurn();
@@ -79,7 +108,14 @@ async function startBattle() {
             );
             await wait(1500);
 
-            monster.attackHunter(hunter);
+            const canMonsterMove = monster.applyStatusTurn()
+            await wait(1000)
+
+            if (canMonsterMove) {
+                monster.attackHunter(hunter);
+            }
+
+
 
             if (hunter.lifePointsHunter <= 50 && hunter.potions > 0) {
                 hunter.usePotion();
