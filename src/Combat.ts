@@ -3,6 +3,7 @@ import { Weapon } from "./interface/Moves";
 import { MonsterCreator } from "./Monster";
 import { getRandomValue } from "./Util";
 
+//aaaa
 export const attackMonster = (
     baseDamage: number,
     damageSkill: number,
@@ -37,14 +38,13 @@ export const attackMonster = (
     const rawDamage = (baseDamage + damageSkill) * multiplier;
     let finalDamage = Math.floor(rawDamage);
 
-    const keys = Object.keys(monster.bodyParts)
-    const monsterRandomPart = getRandomValue(0, keys.length - 1)
-    const randomPartName = keys[monsterRandomPart]!
-    const monsterTargetPart = monster.bodyParts[randomPartName]
+    const keys = Object.keys(monster.bodyParts);
+    const monsterRandomPart = getRandomValue(0, keys.length - 1);
+    const randomPartName = keys[monsterRandomPart]!;
+    const monsterTargetPart = monster.bodyParts[randomPartName];
 
-
-    const partMultiplier = monsterTargetPart?.damageMultiplier ?? 1
-    finalDamage = Math.floor(finalDamage * partMultiplier)
+    const partMultiplier = monsterTargetPart?.damageMultiplier ?? 1;
+    finalDamage = Math.floor(finalDamage * partMultiplier);
 
     if (weapon.element) {
         const elementMultiplier = monster.weakness[weapon.element] ?? 1.0;
@@ -66,44 +66,51 @@ export const attackMonster = (
         `${monster.name} recebeu um golpe na parte [${monsterTargetPart?.name}] tomando ${finalDamage} de dano! (Vida restante: ${monster.lifePointsMonster})`
     );
 
-
     if (weapon.statusEffect) {
-        const statusType = weapon.statusEffect.type
-        const buildAmount = weapon.statusEffect.buildupPerHit
+        const statusType = weapon.statusEffect.type;
+        const buildAmount = weapon.statusEffect.buildupPerHit;
 
-        monster.statusBuildup[statusType] += buildAmount
+        monster.statusBuildup[statusType] += buildAmount;
 
-        console.log(` Status [${statusType}]: ${monster.statusBuildup[statusType]}/1000`)
+        console.log(
+            ` Status [${statusType}]: ${monster.statusBuildup[statusType]}/1000`
+        );
 
         if (monster.statusBuildup[statusType] >= 1000) {
-            console.log(`Limite de Status atingido: ${statusType.toUpperCase}, o efeito será aplicado`)
+            console.log(
+                `Limite de Status atingido: ${statusType.toUpperCase}, o efeito será aplicado`
+            );
 
-            monster.statusBuildup[statusType] = 0
+            monster.statusBuildup[statusType] = 0;
 
             if (statusType === "Blast") {
-                const blastDamage = 300
-                monster.lifePointsMonster -= blastDamage
-                console.log(`O efeito Blast explodiu, causando ${blastDamage} de dano`)
-                console.log(`Vida restante do monstro = ${monster.lifePointsMonster}`)
-            }
-            else if (statusType === "Paralysis") {
+                const blastDamage = 300;
+                monster.lifePointsMonster -= blastDamage;
+                console.log(
+                    `O efeito Blast explodiu, causando ${blastDamage} de dano`
+                );
+                console.log(
+                    `Vida restante do monstro = ${monster.lifePointsMonster}`
+                );
+            } else if (statusType === "Paralysis") {
                 if (!monster.activeStatusEffects.isParalyzed) {
-                    monster.activeStatusEffects.isParalyzed = true
-                    monster.activeStatusEffects.paralysisTurnsLeft = 2
+                    monster.activeStatusEffects.isParalyzed = true;
+                    monster.activeStatusEffects.paralysisTurnsLeft = 2;
 
-                    console.log(`O monstro entrou em estado de paralisia`)
+                    console.log(`O monstro entrou em estado de paralisia`);
                 } else {
-                    console.log(`O monstro já está paralisado`)
+                    console.log(`O monstro já está paralisado`);
                 }
-            }
-            else if (statusType === "Poison") {
+            } else if (statusType === "Poison") {
                 if (!monster.activeStatusEffects.isPoisoned) {
-                    monster.activeStatusEffects.isPoisoned = true
-                    monster.activeStatusEffects.poisonTurnsLeft = 5
-                    console.log(`O monstro foi envenenado, ele perderá vida a cada turno`)
+                    monster.activeStatusEffects.isPoisoned = true;
+                    monster.activeStatusEffects.poisonTurnsLeft = 5;
+                    console.log(
+                        `O monstro foi envenenado, ele perderá vida a cada turno`
+                    );
                 } else {
-                    monster.activeStatusEffects.poisonTurnsLeft = 5
-                    console.log(`A duração do veneno foi renovada`)
+                    monster.activeStatusEffects.poisonTurnsLeft = 5;
+                    console.log(`A duração do veneno foi renovada`);
                 }
             }
         }

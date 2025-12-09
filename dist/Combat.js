@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.attackMonster = void 0;
 const Util_1 = require("./Util");
+//aaaa
 const attackMonster = (baseDamage, damageSkill, hunter, monster, weapon) => {
     let multiplier = 1;
     hunter.activeBuffs.forEach((buff) => {
