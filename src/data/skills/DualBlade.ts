@@ -1,6 +1,4 @@
-import { HunterCreator } from "../../Hunter";
-import { Weapon } from "../../interface/Moves";
-import { MonsterCreator } from "../../Monster";
+
 import { attackMonster } from "../../Combat"
 import { Skill } from "../../interface/Moves";
 
@@ -20,7 +18,7 @@ export const dualbladesMoves: Skill[] = [
         typeOfSkill: ["Attack", "Buff"],
         multiplier: 1.25,
         nameSkill: "Demon Mode",
-        damageSkill: 200,
+        damageSkill: 120,
 
         buffs: [
             {
@@ -57,7 +55,7 @@ export const dualbladesMoves: Skill[] = [
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Blade Dance",
-        damageSkill: 300,
+        damageSkill: 170,
         action: attackMonster,
     },
 
@@ -66,7 +64,7 @@ export const dualbladesMoves: Skill[] = [
         typeOfSkill: ["Attack", "Buff"],
         multiplier: 1.0,
         nameSkill: "Demon Flurry",
-        damageSkill: 140,
+        damageSkill: 120,
 
         buffs: [
             {
@@ -85,7 +83,7 @@ export const dualbladesMoves: Skill[] = [
         typeOfSkill: ["Attack", "Buff", "Buff"],
         multiplier: 1.0,
         nameSkill: "Demon Flurry Rush",
-        damageSkill: 300,
+        damageSkill: 190,
 
         buffs: [
             {
@@ -119,7 +117,7 @@ export const dualbladesMoves: Skill[] = [
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Fade Slash",
-        damageSkill: 170,
+        damageSkill: 70,
         action: attackMonster,
     },
 
@@ -137,7 +135,7 @@ export const dualbladesMoves: Skill[] = [
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Spinning Slash",
-        damageSkill: 140,
+        damageSkill: 120,
         action: attackMonster,
     },
 

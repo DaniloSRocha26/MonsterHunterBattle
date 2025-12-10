@@ -78,6 +78,12 @@ export class HunterCreator {
         console.log(`Usou poção!, ${this.potions} restantes`);
     }
 
+
+    offSetDefense(monster: MonsterCreator): void {
+        //this.attackMonster()
+
+    }
+
     async attackMonster(monster: MonsterCreator): Promise<void> {
         const totalSkills = this.weapon.skills.length;
         const randomSkill = Math.floor(Math.random() * totalSkills);
