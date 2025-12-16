@@ -2,7 +2,7 @@ import { Weapon } from "./interface/Moves";
 import { Buff } from "./interface/Moves";
 import { MonsterCreator } from "./Monster";
 import { monster } from "./main";
-import { wait } from "./Util";
+import { getRandomValue, wait } from "./Util";
 
 export class HunterCreator {
     private id = 1;
@@ -78,11 +78,10 @@ export class HunterCreator {
         console.log(`Usou poção!, ${this.potions} restantes`);
     }
 
-
-    offSetDefense(monster: MonsterCreator): void {
-        //this.attackMonster()
-
+    hasOffsetSkil(): boolean {
+        return this.weapon.skills.some(skill => skill.typeOfSkill.includes("Offset"))
     }
+
 
     async attackMonster(monster: MonsterCreator): Promise<void> {
         const totalSkills = this.weapon.skills.length;

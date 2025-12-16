@@ -3,7 +3,6 @@ import { Weapon } from "./interface/Moves";
 import { MonsterCreator } from "./Monster";
 import { getRandomValue } from "./Util";
 
-//aaaa
 export const attackMonster = (
     baseDamage: number,
     damageSkill: number,

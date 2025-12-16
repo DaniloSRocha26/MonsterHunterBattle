@@ -36,7 +36,7 @@ export const greatSwordMoves: Skill[] = [
 
     {
         id: 4,
-        typeOfSkill: ["Defense"],
+        typeOfSkill: ["Offset"],
         multiplier: 1.0,
         nameSkill: "Offset Rising Slash",
         damageSkill: 250,

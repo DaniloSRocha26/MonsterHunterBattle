@@ -44,8 +44,8 @@ export const weaponType: WeaponType[] = [
     "Heavy Bowgun ",
 ];
 
-type TypeOfSkill = "Attack" | "Defense" | "Buff";
-export const typeOfSkill: TypeOfSkill[] = ["Attack", "Defense", "Buff"];
+type TypeOfSkill = "Attack" | "Defense" | "Buff" | "Offset";
+export const typeOfSkill: TypeOfSkill[] = ["Attack", "Defense", "Buff", "Offset"];
 
 export interface Skill {
     id: number;

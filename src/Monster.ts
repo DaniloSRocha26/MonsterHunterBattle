@@ -1,7 +1,8 @@
 import { BodyPart } from "./interface/Moves";
 import { monster } from "./main";
-import { wait } from "./Util";
+import { getRandomValue, wait } from "./Util";
 
+import { HunterCreator } from "./Hunter";
 
 
 
@@ -32,6 +33,8 @@ export class MonsterCreator {
         isPoisoned: boolean
         poisonTurnsLeft: number
         poisonDamage: number
+        isStunned: boolean
+        stunTurnsLeft: number
     }
 
     constructor(
@@ -69,7 +72,9 @@ export class MonsterCreator {
             paralysisTurnsLeft: 0,
             isPoisoned: false,
             poisonTurnsLeft: 0,
-            poisonDamage: 50
+            poisonDamage: 50,
+            isStunned: false,
+            stunTurnsLeft: 0
         }
 
     }
@@ -102,17 +107,45 @@ export class MonsterCreator {
             }
         }
 
+        if (this.activeStatusEffects.isStunned) {
+            canMove = false
+            this.activeStatusEffects.stunTurnsLeft--
+            console.log(`O ${monster.name} foi atordoado pelo Offset e perdeu o turno `)
+
+            if (this.activeStatusEffects.stunTurnsLeft <= 0) {
+                this.activeStatusEffects.isStunned = false
+                console.log(`O ${monster.name} se recuperou do stun`)
+            }
+        }
+
         return canMove
     }
 
 
-    async attackHunter(hunter: {
-        lifePointsHunter: number;
-        dodgeChanceBase: number;
-        name: string;
-    }): Promise<void> {
+    async attackHunter(hunter: HunterCreator): Promise<void> {
         await wait(500);
         if (this.attackChanceBase > hunter.dodgeChanceBase) {
+
+            if (hunter.hasOffsetSkil()) {
+                console.log(` ${hunter.name} prepara o Offset`)
+                await wait(800)
+
+                const OffsetRoll = getRandomValue(0, 100)
+                const offSetDifficulty = 30
+
+                if (OffsetRoll > offSetDifficulty) {
+                    console.log(`Sucesso no Offset`)
+                    console.log(`${hunter.name} bloqueou perfeitamente o ataque`)
+
+                    this.activeStatusEffects.isStunned = true
+                    this.activeStatusEffects.stunTurnsLeft = 1
+
+                    return
+                } else {
+                    (console.log(`Falha no offSet: ${OffsetRoll}%, o ataque irá acertar`))
+                }
+            }
+            console.log(`O monstro atacará o caçador ${hunter.name}`)
             await wait(1500);
             const damage = hunter.lifePointsHunter - this.damageMonster;
             const damageDealt = hunter.lifePointsHunter - damage;
