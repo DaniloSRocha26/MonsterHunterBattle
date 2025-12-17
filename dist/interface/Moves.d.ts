@@ -11,7 +11,7 @@ export type BodyPart = {
 };
 type WeaponType = "Great Sword" | "Sword & Shield" | "Dual Blades" | "Long Sword" | "Hunting Horn " | "Lance" | "Gunlance" | "Hammer" | "Switch Axe" | "Charge Blade" | "Insect Glaive" | "Bow" | "Light Bowgun" | "Heavy Bowgun ";
 export declare const weaponType: WeaponType[];
-type TypeOfSkill = "Attack" | "Defense" | "Buff";
+type TypeOfSkill = "Attack" | "Defense" | "Buff" | "Offset";
 export declare const typeOfSkill: TypeOfSkill[];
 export interface Skill {
     id: number;

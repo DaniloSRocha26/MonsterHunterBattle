@@ -53,6 +53,9 @@ class HunterCreator {
         this.lifePointsHunter = healing;
         console.log(`Usou poção!, ${this.potions} restantes`);
     }
+    hasOffsetSkil() {
+        return this.weapon.skills.some(skill => skill.typeOfSkill.includes("Offset"));
+    }
     async attackMonster(monster) {
         const totalSkills = this.weapon.skills.length;
         const randomSkill = Math.floor(Math.random() * totalSkills);

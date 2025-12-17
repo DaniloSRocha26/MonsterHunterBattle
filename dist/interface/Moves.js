@@ -17,5 +17,5 @@ exports.weaponType = [
     "Light Bowgun",
     "Heavy Bowgun ",
 ];
-exports.typeOfSkill = ["Attack", "Defense", "Buff"];
+exports.typeOfSkill = ["Attack", "Defense", "Buff", "Offset"];
 //# sourceMappingURL=Moves.js.map

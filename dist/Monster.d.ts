@@ -1,4 +1,5 @@
 import { BodyPart } from "./interface/Moves";
+import { HunterCreator } from "./Hunter";
 export declare class MonsterCreator {
     name: string;
     damageMonster: number;
@@ -26,6 +27,8 @@ export declare class MonsterCreator {
         isPoisoned: boolean;
         poisonTurnsLeft: number;
         poisonDamage: number;
+        isStunned: boolean;
+        stunTurnsLeft: number;
     };
     constructor(name: string, damageMonster: number, lifePointsMonster: number, dodgeChanceBase: number, attackChanceBase: number, weakness: {
         Fire?: number;
@@ -37,10 +40,6 @@ export declare class MonsterCreator {
         [key: string]: BodyPart;
     });
     applyStatusTurn(): boolean;
-    attackHunter(hunter: {
-        lifePointsHunter: number;
-        dodgeChanceBase: number;
-        name: string;
-    }): Promise<void>;
+    attackHunter(hunter: HunterCreator): Promise<void>;
 }
 //# sourceMappingURL=Monster.d.ts.map

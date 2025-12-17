@@ -31,7 +31,9 @@ class MonsterCreator {
             paralysisTurnsLeft: 0,
             isPoisoned: false,
             poisonTurnsLeft: 0,
-            poisonDamage: 50
+            poisonDamage: 50,
+            isStunned: false,
+            stunTurnsLeft: 0
         };
     }
     applyStatusTurn() {
@@ -55,11 +57,37 @@ class MonsterCreator {
                 console.log(`O monstro ${main_1.monster.name} se recuperou da paralisia`);
             }
         }
+        if (this.activeStatusEffects.isStunned) {
+            canMove = false;
+            this.activeStatusEffects.stunTurnsLeft--;
+            console.log(`O ${main_1.monster.name} foi atordoado pelo Offset e perdeu o turno `);
+            if (this.activeStatusEffects.stunTurnsLeft <= 0) {
+                this.activeStatusEffects.isStunned = false;
+                console.log(`O ${main_1.monster.name} se recuperou do stun`);
+            }
+        }
         return canMove;
     }
     async attackHunter(hunter) {
         await (0, Util_1.wait)(500);
         if (this.attackChanceBase > hunter.dodgeChanceBase) {
+            if (hunter.hasOffsetSkil()) {
+                console.log(` ${hunter.name} prepara o Offset`);
+                await (0, Util_1.wait)(800);
+                const OffsetRoll = (0, Util_1.getRandomValue)(0, 100);
+                const offSetDifficulty = 30;
+                if (OffsetRoll > offSetDifficulty) {
+                    console.log(`Sucesso no Offset`);
+                    console.log(`${hunter.name} bloqueou perfeitamente o ataque`);
+                    this.activeStatusEffects.isStunned = true;
+                    this.activeStatusEffects.stunTurnsLeft = 1;
+                    return;
+                }
+                else {
+                    (console.log(`Falha no offSet: ${OffsetRoll}%, o ataque irá acertar`));
+                }
+            }
+            console.log(`O monstro atacará o caçador ${hunter.name}`);
             await (0, Util_1.wait)(1500);
             const damage = hunter.lifePointsHunter - this.damageMonster;
             const damageDealt = hunter.lifePointsHunter - damage;

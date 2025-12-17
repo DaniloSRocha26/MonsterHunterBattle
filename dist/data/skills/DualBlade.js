@@ -16,7 +16,7 @@ exports.dualbladesMoves = [
         typeOfSkill: ["Attack", "Buff"],
         multiplier: 1.25,
         nameSkill: "Demon Mode",
-        damageSkill: 200,
+        damageSkill: 120,
         buffs: [
             {
                 name: "Demon Mode",
@@ -48,7 +48,7 @@ exports.dualbladesMoves = [
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Blade Dance",
-        damageSkill: 300,
+        damageSkill: 170,
         action: Combat_1.attackMonster,
     },
     {
@@ -56,7 +56,7 @@ exports.dualbladesMoves = [
         typeOfSkill: ["Attack", "Buff"],
         multiplier: 1.0,
         nameSkill: "Demon Flurry",
-        damageSkill: 140,
+        damageSkill: 120,
         buffs: [
             {
                 name: "LifeSteal+",
@@ -72,7 +72,7 @@ exports.dualbladesMoves = [
         typeOfSkill: ["Attack", "Buff", "Buff"],
         multiplier: 1.0,
         nameSkill: "Demon Flurry Rush",
-        damageSkill: 300,
+        damageSkill: 190,
         buffs: [
             {
                 name: "Demon Mode+",
@@ -102,7 +102,7 @@ exports.dualbladesMoves = [
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Fade Slash",
-        damageSkill: 170,
+        damageSkill: 70,
         action: Combat_1.attackMonster,
     },
     {
@@ -118,7 +118,7 @@ exports.dualbladesMoves = [
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Spinning Slash",
-        damageSkill: 140,
+        damageSkill: 120,
         action: Combat_1.attackMonster,
     },
 ];
