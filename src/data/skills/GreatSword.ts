@@ -45,45 +45,21 @@ export const greatSwordMoves: Skill[] = [
 
     {
         id: 5,
-        typeOfSkill: ["Attack", "Buff"],
+        typeOfSkill: ["Attack"],
         multiplier: 1.0,
-        nameSkill: "Demon Flurry",
+        nameSkill: "Side Blow",
         damageSkill: 120,
-
-        buffs: [
-            {
-                name: "LifeSteal+",
-                buffValue: 30,
-                duration: 2,
-                type: "lifesteal",
-            },
-        ],
 
         action: attackMonster,
     },
 
     {
         id: 6,
-        typeOfSkill: ["Attack", "Buff", "Buff"],
+        typeOfSkill: ["Attack"],
         multiplier: 1.0,
-        nameSkill: "Demon Flurry Rush",
-        damageSkill: 270,
+        nameSkill: "Turning Slash",
+        damageSkill: 400,
 
-        buffs: [
-            {
-                name: "Demon Mode+",
-                buffValue: 1.2,
-                duration: 2,
-                type: "damage",
-            },
-
-            {
-                name: "LifeSteal+",
-                buffValue: 30,
-                duration: 2,
-                type: "lifesteal",
-            },
-        ],
         action: attackMonster,
     },
 
@@ -91,8 +67,8 @@ export const greatSwordMoves: Skill[] = [
         id: 7,
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
-        nameSkill: "Rising Slash",
-        damageSkill: 150,
+        nameSkill: "Sweeping Slash",
+        damageSkill: 200,
         action: attackMonster,
     },
 
@@ -100,8 +76,8 @@ export const greatSwordMoves: Skill[] = [
         id: 8,
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
-        nameSkill: "Fade Slash",
-        damageSkill: 170,
+        nameSkill: "Backstep Slash",
+        damageSkill: 150,
         action: attackMonster,
     },
 
@@ -109,8 +85,8 @@ export const greatSwordMoves: Skill[] = [
         id: 9,
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
-        nameSkill: "Roundslash",
-        damageSkill: 110,
+        nameSkill: "Charged Draw Slash",
+        damageSkill: 350,
         action: attackMonster,
     },
 
@@ -118,8 +94,8 @@ export const greatSwordMoves: Skill[] = [
         id: 10,
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
-        nameSkill: "Spinning Slash",
-        damageSkill: 140,
+        nameSkill: "Overdrive Slash",
+        damageSkill: 290,
         action: attackMonster,
     },
 
