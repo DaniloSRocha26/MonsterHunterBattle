@@ -13,7 +13,7 @@ exports.greatSwordMoves = [
     },
     {
         id: 2,
-        typeOfSkill: ["Attack", "Buff"],
+        typeOfSkill: ["Attack"],
         multiplier: 1.25,
         nameSkill: "Wide Slash",
         damageSkill: 190,
@@ -21,7 +21,7 @@ exports.greatSwordMoves = [
     },
     {
         id: 3,
-        typeOfSkill: ["Attack", "Buff"],
+        typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Rising Slash",
         damageSkill: 250,

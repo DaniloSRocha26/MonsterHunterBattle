@@ -15,7 +15,7 @@ export const greatSwordMoves: Skill[] = [
 
     {
         id: 2,
-        typeOfSkill: ["Attack", "Buff"],
+        typeOfSkill: ["Attack"],
         multiplier: 1.25,
         nameSkill: "Wide Slash",
         damageSkill: 190,
@@ -25,7 +25,7 @@ export const greatSwordMoves: Skill[] = [
 
     {
         id: 3,
-        typeOfSkill: ["Attack", "Buff"],
+        typeOfSkill: ["Attack"],
         multiplier: 1.0,
         nameSkill: "Rising Slash",
         damageSkill: 250,
