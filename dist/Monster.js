@@ -71,7 +71,7 @@ class MonsterCreator {
     async attackHunter(hunter) {
         await (0, Util_1.wait)(500);
         if (this.attackChanceBase > hunter.dodgeChanceBase) {
-            if (hunter.hasOffsetSkil()) {
+            if (hunter.hasOffsetSkill()) {
                 console.log(` ${hunter.name} prepara o Offset`);
                 await (0, Util_1.wait)(800);
                 const OffsetRoll = (0, Util_1.getRandomValue)(0, 100);
@@ -85,6 +85,19 @@ class MonsterCreator {
                 }
                 else {
                     (console.log(`Falha no offSet: ${OffsetRoll}%, o ataque irá acertar`));
+                }
+                if (hunter.hasDefenseSkill()) {
+                    console.log(`${hunter.name} levantou o escudo`);
+                    await (0, Util_1.wait)(500);
+                    const defenseRoll = (0, Util_1.getRandomValue)(0, 100);
+                    const defenseDifficulty = 30;
+                    if (defenseRoll > defenseDifficulty) {
+                        console.log(`${hunter.name} Bloqueou com sucesso e não sofrerá Dano`);
+                        return;
+                    }
+                    else {
+                        console.log(`A defesa não foi bem sucedida`);
+                    }
                 }
             }
             console.log(`O monstro atacará o caçador ${hunter.name}`);

@@ -78,10 +78,13 @@ export class HunterCreator {
         console.log(`Usou poção!, ${this.potions} restantes`);
     }
 
-    hasOffsetSkil(): boolean {
+    hasOffsetSkill(): boolean {
         return this.weapon.skills.some(skill => skill.typeOfSkill.includes("Offset"))
     }
 
+    hasDefenseSkill(): boolean {
+        return this.weapon.skills.some(skill => skill.typeOfSkill.includes("Defense"))
+    }
 
     async attackMonster(monster: MonsterCreator): Promise<void> {
         const totalSkills = this.weapon.skills.length;

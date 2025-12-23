@@ -17,7 +17,8 @@ export declare class HunterCreator {
     constructor(name: string, weapon: Weapon, damageWeapon: Weapon, lifePointsHunter: number, armor: number, dodgeChanceBase: number, attackChanceBase: number, maxLifePoints: number);
     nextTurn(): void;
     usePotion(): void;
-    hasOffsetSkil(): boolean;
+    hasOffsetSkill(): boolean;
+    hasDefenseSkill(): boolean;
     attackMonster(monster: MonsterCreator): Promise<void>;
 }
 //# sourceMappingURL=Hunter.d.ts.map
