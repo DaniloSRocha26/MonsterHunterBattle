@@ -71,7 +71,7 @@ exports.gunLanceMoves = [
         id: 9,
         typeOfSkill: ["Attack"],
         multiplier: 1.0,
-        nameSkill: "Dash Attac",
+        nameSkill: "Dash Attack",
         damageSkill: 150,
         action: Combat_1.attackMonster,
     },
