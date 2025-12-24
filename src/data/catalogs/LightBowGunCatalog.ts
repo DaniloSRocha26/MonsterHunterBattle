@@ -23,3 +23,4 @@ export const LightBowGunList = [{
     name: "Szelatya Clairgun", status: "Blast", source: "Gravios"
 }
 ]
+
